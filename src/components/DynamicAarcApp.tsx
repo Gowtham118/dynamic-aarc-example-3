@@ -6,9 +6,10 @@ interface Props {
     logoLight: string;
     logoDark: string;
     aarcModal: AarcFundKitModal;
+    tokenSymbol?: string;
 }
 
-const DynamicAarcApp = ({ isDark, logoLight, logoDark, aarcModal }: Props) => {
+const DynamicAarcApp = ({ isDark, logoLight, logoDark, aarcModal, tokenSymbol }: Props) => {
     const isLoggedIn = useIsLoggedIn();
     const { primaryWallet } = useDynamicContext();
 
@@ -48,7 +49,7 @@ const DynamicAarcApp = ({ isDark, logoLight, logoDark, aarcModal }: Props) => {
                         onClick={handleFundWallet}
                         className="fund-wallet-button"
                     >
-                        Fund Wallet
+                        {tokenSymbol ? `Buy ${tokenSymbol}` : "Fund Wallet"}
                     </button>
                 )}
             </main>
